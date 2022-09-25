@@ -56,30 +56,30 @@ app.get("/users", function (req, res) {
 // Post Data
 app.post("/user",async function (req, res) {
 
-   try {
-     // Step 1 : Create a Connection between Nodejs and MongoDb
-     const connection = await mongoClient.connect(URL)
+//    try {
+//      // Step 1 : Create a Connection between Nodejs and MongoDb
+//      const connection = await mongoClient.connect(URL)
 
-     // Step 2 : Select the db
-     const db = connection.db(DB)
+//      // Step 2 : Select the db
+//      const db = connection.db(DB)
  
-     // Step 3 : Select the Collections
-     // Step 4 : Do the Operations (Create, Update, read, delete)
-     await db.collection("users").insertOne(req.body)
+//      // Step 3 : Select the Collections
+//      // Step 4 : Do the Operations (Create, Update, read, delete)
+//      await db.collection("users").insertOne(req.body)
  
-     // Step 5 : Close the Connection
-     await connection.close()
+//      // Step 5 : Close the Connection
+//      await connection.close()
  
-     res.status(200).json({message:"Data Inserted "})
-   } catch (error) {
-    //  If any error throw error
-    res.status(500).json({message:"Something went Wrong"})
-   }
+//      res.status(200).json({message:"Data Inserted "})
+//    } catch (error) {
+//     //  If any error throw error
+//     res.status(500).json({message:"Something went Wrong"})
+//    }
 
     // console.log(req.body);
-    // req.body.id = users.length + 1;
-    // users.push(req.body);
-    // res.json({ message: "User Created Successfully" });
+    req.body.id = users.length + 1;
+    users.push(req.body);
+    res.json({ message: "User Created Successfully" });
 });
 
 // get data
