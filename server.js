@@ -5,7 +5,7 @@ const app = express()
 const mongoClient = mongodb.MongoClient
 // const URL = "mongodb://localhost:27017"
 const URL = "mongodb+srv://Arslan:admin123@cluster0.jiog1sg.mongodb.net/?retryWrites=true&w=majority"
-const DB = "zenclass"
+const DB = "b37"
 
 let users = [];
 
