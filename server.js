@@ -8,7 +8,7 @@ let users = [];
 // Middleware
 app.use(express.json())
 app.use(cors({
-    origin : `process.env.PORT || http://localhost:3001`
+    origin : 'http://localhost:3000'
 }))
 
 
