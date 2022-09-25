@@ -11,8 +11,8 @@ let users = [];
 // Middleware
 app.use(express.json())
 app.use(cors({
-    origin : 'http://localhost:3000'
-    // origin:'https://sensational-pegasus-ea84cf.netlify.app'
+    // origin : 'http://localhost:3000'
+    origin:'https://sensational-pegasus-ea84cf.netlify.app'
 }))
 
 
