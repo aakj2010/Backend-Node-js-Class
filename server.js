@@ -39,7 +39,7 @@ app.get("/about", function (req, res) {
 });
 
 
-// get users
+// get All users
 app.get("/users", async function (req, res) {
     // let qParams = req.query
     // console.log(qParams);
@@ -107,16 +107,41 @@ app.post("/user",async function (req, res) {
     // res.json({ message: "User Created Successfully" });
 });
 
-// get data
-app.get("/user/:id", function (req, res) {
-    let userId = req.params.id;
-    let user = users.find((item) => item.id == userId)
-    console.log(user);
-    if (user) {
-        res.json(user)
-    } else {
-        res.json({ message: "User not found" })
-    }
+// get User By Id
+app.get("/user/:id", async function (req, res) {
+    // let userId = req.params.id;
+    // let user = users.find((item) => item.id == userId)
+    // console.log(user);
+    // if (user) {
+    //     res.json(user)
+    // } else {
+    //     res.json({ message: "User not found" })
+    // }
+
+    try {
+        // Step 1 : Create a Connection between Nodejs and MongoDb
+        const connection = await mongoClient.connect(URL)
+   
+        // Step 2 : Select the db
+        const db = connection.db(DB)
+    
+        // Step 3 : Select the Collections
+        // Step 4 : Do the Operations (Create, Update, read, delete)
+        let users =   await db.collection("users").findOne({_id: mongodb.ObjectId(req.params.id) });
+        
+    
+        // Step 5 : Close the Connection
+        await connection.close()
+
+        res.json(users);
+    
+      } catch (error) {
+       //  If any error throw error
+       res.status(500).json({message:"Something went Wrong"})
+      }
+
+
+
 })
 
 
